@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
   <head>
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
@@ -24,8 +23,8 @@
 
           <% if user_signed_in? %>
 
-          <!--↓Usersのパスができてない！！！、ログアウトのパスも確認！！！-->
-          <li><%= link_to "Users",books_path, class:'fas fa-users nav-link text-light' %></li>
+          <!--↓Usersのパスができてない！！！できたかも！！！、ログアウトのパスも確認！！！-->
+          <li><%= link_to "Users",users_path, class:'fas fa-users nav-link text-light' %></li>
           <li><%= link_to "Books",books_path, class:'fas fa-book-open nav-link text-light' %></li>
           <li><%= link_to "logout",destroy_user_session_path, method: :delete, class:'fas fa-sign-out-alt nav-link text-light' %></li>
           <% else %>
@@ -55,5 +54,4 @@
     </div>
   </div>
 </footer>
-  </body>
-</html>
+</body>
