@@ -50,8 +50,8 @@
   		    <tr>
   		          <% @book.book_comments.each do |book_comment| %>
   		        <td>
-  		          <%=link_to user_path(@book.user) do %>
-                <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  		          <%=link_to user_path(book_comment.user) do %>
+                <p><%= attachment_image_tag book_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
 
                 <%= book_comment.user.name %>
                 <% end %>
