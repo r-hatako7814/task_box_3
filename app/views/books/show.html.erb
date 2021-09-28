@@ -44,25 +44,37 @@
   		      </p>
   		      </td>
   		      <td>
-  		        <div>
-
-  		          <p>コメント件数：<%= @book.book_comments.count %></p>
-  		          <% @book.book?comments.each do |book_comment| %>
-  		          <%=link_to user_path(book.user) do %>
-                <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-                <%= book_comment.user.name %>
-                <%= book_comment.created_at.strftime('%Y/%m/%d')%><%= book_comment.comment.comment %>
-                <% end %>
-                <% end %>
-              </div>
-              <div>
-                <%= form_with(model:[@book,@book_comment], local: true) do |f| %>
-                  <%=f.text_area :comment, 'rows5',placeholder:"コメントをここに"　%>
-                  <%= f.submit "送信する" %>
-                <% end %>
-              </div>
+               <p>コメント件数：<%= @book.book_comments.count %></p>
   		      </td>
   		    </tr>
+  		    <tr>
+  		          <% @book.book_comments.each do |book_comment| %>
+  		        <td>
+  		          <%=link_to user_path(@book.user) do %>
+                <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+
+                <%= book_comment.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= book_comment.comment %>
+              </td>
+              <td>
+                <% if book_comment.user == current_user %>
+                <%= link_to "削除",book_book_comment_path(book_comment.book,book_comment), method: :delete %>
+                <% end %>
+              </td>
+
+                <% end %>
+          <tr>
+            <td>
+                <%= form_with(model:[@book,@book_comment], local: true) do |f| %>
+                  <%=f.text_area :comment,rows:'5',placeholder:"コメントをここに" %></br>
+                  <%= f.submit "送信する" %>
+                <% end %>
+            </td>
+          </tr>
+
         </tbody>
       </table>
 </div>

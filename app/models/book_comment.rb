@@ -2,5 +2,5 @@ class BookComment < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
-  varidates :comment, presence: true
+  # varidates :comment, presence: true
 end
