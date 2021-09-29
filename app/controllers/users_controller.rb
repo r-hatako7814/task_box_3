@@ -28,6 +28,21 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = User.find(params[:id])
     @books = @user.books.all
+    # @posts = @user.posts.page(params[:page]).reverse_order
+    # @following_users = @user.following_user
+    # @follower_users = @user.follower_user
+  end
+
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 
 
