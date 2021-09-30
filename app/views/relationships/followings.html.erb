@@ -1,9 +1,6 @@
-<div class = "container px-5 px-sm-0">
-  <div class = "row">
 <h2>Follower Users</h2>
 <% if @users.exists? %>
-<table>
-  <div class="col-md-3">
+<table class = "table">
   <thead>
     <tr>
       <th>Image</th>
@@ -25,9 +22,7 @@
     </tr>
     <% end %>
   </tbody>
-</table>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
-</div>
-</div>
+</table>
