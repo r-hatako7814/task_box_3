@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id",dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
+
+  def already_favorited?(book)
+    self.favorites.exists?(book_id: book.id)
+  end
+
   def follow(user_id)
     unless self == user_id
     self.relationships.find_or_create_by(followed_id: user_id.to_i, follower_id: self.id)
